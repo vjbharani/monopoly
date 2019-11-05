@@ -2,8 +2,6 @@ import hotel as H
 import tkinter as tk
 class board:
     def __init__(self,playerList):
-        root = tk.Tk()
-        board = [[None] * 38 for _ in range(38)]
         self.__playerList=playerList
         self.__hotel=[2,9,19,32]
         self.__treasure=[33,22,12,3]
@@ -11,23 +9,7 @@ class board:
         self.hotl=[]
         for i in self.__hotel:
             self.hotl.append(H.hotel(i))
-        count =-1
-        for i, row in enumerate(board):
-            for j, column in enumerate(row):
-                if i == 0 or j == 0 or j == 37 or i == 37:
-                    count+=1
-                    L = tk.Label(root, text='    ', borderwidth=2, relief="groove", bg='green')
-                    L.grid(row=i, column=j)
-                    if (count in self.__hotel):
-                        L = tk.Label(root, text=' H ', borderwidth=2, relief="groove", bg='blue')
-                        L.grid(row=i, column=j)
-                    if (count in self.__jail):
-                        L = tk.Label(root, text=' J ', borderwidth=2, relief="groove", bg='red')
-                        L.grid(row=i, column=j)
-                    if (count in self.__treasure):
-                        L = tk.Label(root, text=' T ', borderwidth=2, relief="groove", bg='orange')
-                        L.grid(row=i, column=j)
-        root.mainloop()
+
 
 
     def play(self,player,pos):
